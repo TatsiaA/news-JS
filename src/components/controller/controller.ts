@@ -1,6 +1,6 @@
 import AppLoader from './appLoader';
 
-interface ChangeInterface {
+interface IChangeInterface {
     target: HTMLElement;
     currentTarget: HTMLElement;
 }
@@ -14,7 +14,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: ChangeInterface, callback: () => void) {
+    getNews(e: IChangeInterface, callback: () => void) {
         let target: HTMLElement = e.target;
         const newsContainer = e.currentTarget;
 
