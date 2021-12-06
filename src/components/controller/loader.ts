@@ -3,7 +3,7 @@ import { IDataSources } from "../view/sources/sources";
 export type Callback<T> = (data: T) => void;
 class Loader {
     baseLink: string;
-    options: { [key: string]: string };
+    readonly options: { [key: string]: string };
 
     constructor(baseLink: string, options: { [key: string]: string }) {
         this.baseLink = baseLink;
