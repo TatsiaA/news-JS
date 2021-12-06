@@ -1,8 +1,11 @@
 import './sources.css';
 
+
 export interface IDataSources {
     status: string;
-    sources: Array<Source>;
+    sources?: Array<Source>;
+    totalResults?: number;
+    articles?: Array<Text>;
 };
 
 export type Source = {
@@ -13,6 +16,20 @@ export type Source = {
     category: string;
     language: string;
     country: string;
+};
+
+export type Text = {
+    source: {
+        id?: string;
+        name: string;
+        };
+    author?: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content?: string;
 };
 
 class Sources {

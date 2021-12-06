@@ -1,4 +1,6 @@
-type Callback = <T>(data: T) => void;
+import { IDataSources } from "../view/sources/sources";
+
+export type Callback<T> = (data: T) => void;
 class Loader {
     baseLink: string;
     options: { [key: string]: string };
@@ -8,12 +10,9 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
+    public getResp(
         { endpoint, options = {} }: {endpoint: string, options?: object},
-        callback = <T> (data: T): void => {
-            console.error('No callback for GET response');
-        }
-    ) {
+        callback: Callback<IDataSources>) {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -38,12 +37,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback, options: object = {}) {
+    load(method: string, endpoint: string, callback: Callback<IDataSources>, options: Object = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((data: IDataSources) => callback(data))
+            .catch((err: Error) => console.error(err));
     }
 }
 

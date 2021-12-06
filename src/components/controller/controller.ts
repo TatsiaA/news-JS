@@ -1,11 +1,14 @@
+//import { IDataNews } from '../view/news/news';
+import { IDataSources } from '../view/sources/sources';
 import AppLoader from './appLoader';
+import { Callback } from './loader';
 
-interface IChangeInterface {
-    target: HTMLElement;
-    currentTarget: HTMLElement;
-}
+// interface IChangeInterface extends MouseEvent {
+//     target: HTMLElement;
+//     currentTarget: HTMLElement;
+// }
 class AppController extends AppLoader {
-    getSources(callback: () => void) {
+    getSources(callback: Callback<IDataSources>) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -14,9 +17,9 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: IChangeInterface, callback: () => void) {
-        let target: HTMLElement = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: MouseEvent, callback: Callback<IDataSources>) {
+        let target: HTMLElement = <HTMLElement> e.target;
+        const newsContainer: HTMLElement = <HTMLElement> e.currentTarget;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {

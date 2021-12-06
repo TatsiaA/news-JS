@@ -14,7 +14,14 @@ const baseConfig = {
             },
             {
                 test: /\.[tj]s$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                      loader: 'ts-loader',
+                    //   options: {
+                    //     transpileOnly: true
+                    //   }
+                    }
+                  ],
                 exclude: /node_modules/,
             },
         ],
