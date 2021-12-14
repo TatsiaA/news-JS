@@ -18,12 +18,12 @@ class AppController extends AppLoader {
     }
 
     getNews(e: MouseEvent, callback: Callback<IDataSources>) {
-        let target: HTMLElement = <HTMLElement> e.target;
-        const newsContainer: HTMLElement = <HTMLElement> e.currentTarget;
+        let target: HTMLElement = <HTMLElement>e.target;
+        const newsContainer: HTMLElement = <HTMLElement>e.currentTarget;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = <string> target.getAttribute('data-source-id');
+                const sourceId = <string>target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
@@ -38,7 +38,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            target = <HTMLElement> target.parentNode;
+            target = <HTMLElement>target.parentNode;
         }
     }
 }

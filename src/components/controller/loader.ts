@@ -1,8 +1,9 @@
-import { IDataSources } from "../view/sources/sources";
+import { IDataSources } from '../view/sources/sources';
 
 export type Callback<T> = (data: T) => void;
 class Loader {
     baseLink: string;
+
     readonly options: { [key: string]: string };
 
     constructor(baseLink: string, options: { [key: string]: string }) {
@@ -11,8 +12,9 @@ class Loader {
     }
 
     public getResp(
-        { endpoint, options = {} }: {endpoint: string, options?: object},
-        callback: Callback<IDataSources>) {
+        { endpoint, options = {} }: { endpoint: string; options?: object },
+        callback: Callback<IDataSources>
+    ) {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -28,16 +30,16 @@ class Loader {
 
     makeUrl(options: object, endpoint: string) {
         const urlOptions: object = { ...this.options, ...options };
-        let url: string = `${this.baseLink}${endpoint}?`;
+        let url = `${this.baseLink}${endpoint}?`;
 
-        (Object.keys(urlOptions) as Array <keyof typeof urlOptions>).forEach((key) => {
+        (Object.keys(urlOptions) as Array<keyof typeof urlOptions>).forEach((key) => {
             url += `${key}=${urlOptions[key]}&`;
         });
 
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback<IDataSources>, options: Object = {}) {
+    load(method: string, endpoint: string, callback: Callback<IDataSources>, options: object = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

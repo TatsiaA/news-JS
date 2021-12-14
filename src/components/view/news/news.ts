@@ -1,29 +1,7 @@
-
 import { Text } from '../sources/sources';
 import './news.css';
 
-// export interface IDataNews {
-//     status: string;
-//     totalResults: number;
-//     articles: Array<Text>;
-// };
-
-// export type Text = {
-//     source: {
-//         id?: string;
-//         name: string;
-//         };
-//     author?: string;
-//     title: string;
-//     description: string;
-//     url: string;
-//     urlToImage: string;
-//     publishedAt: string;
-//     content?: string;
-// };
-
 class News {
-    
     public draw(data: Array<Text>) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
@@ -38,7 +16,8 @@ class News {
             (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
-            (newsClone.querySelector('.news__meta-author') as HTMLDListElement).textContent = item.author || item.source.name;
+            (newsClone.querySelector('.news__meta-author') as HTMLDListElement).textContent =
+                item.author || item.source.name;
             (newsClone.querySelector('.news__meta-date') as HTMLDListElement).textContent = item.publishedAt
                 .slice(0, 10)
                 .split('-')
@@ -47,7 +26,9 @@ class News {
 
             (newsClone.querySelector('.news__description-title') as HTMLTitleElement).textContent = item.title;
             (newsClone.querySelector('.news__description-source') as HTMLTitleElement).textContent = item.source.name;
-            (newsClone.querySelector('.news__description-content') as HTMLParagraphElement).textContent = item.description;
+            (newsClone.querySelector('.news__description-content') as HTMLParagraphElement).textContent =
+                item.description;
+
             (newsClone.querySelector('.news__read-more a') as HTMLLinkElement).setAttribute('href', item.url);
 
             fragment.append(newsClone);
