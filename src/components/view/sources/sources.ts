@@ -41,7 +41,6 @@ class Sources {
 
             (sourceClone.querySelector('.source__item-name') as HTMLSpanElement).textContent = item.name;
             (sourceClone.querySelector('.source__item') as HTMLDivElement).setAttribute('data-source-id', item.id);
-
             fragment.append(sourceClone);
         });
 

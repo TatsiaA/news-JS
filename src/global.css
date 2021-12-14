@@ -25,52 +25,53 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
 footer .copyright {
     width: 100%;
     font-size: 14px;
     color: #333;
     text-align: center;
 }
+
 footer .copyright a {
     color: #444;
 }
+
 footer .copyright a:hover {
     color: #555;
 }
+
 footer .copyright:before {
     content: '©';
 }
 
 footer a {
-    text-decoration: none;
-    
-  }
+    text-decoration: none;    
+}
 
-  .text__footer {
-    color: #fff;
-  }
+.text__footer {
+  color: #fff;
+}
   
-  .text__rs {
-    height: 30px;
-    width: 60px;
-    margin-right: 30px;
-    background-image: url(./rs_school.svg);
-    background-repeat: no-repeat;
-    background-size: 100% 30px;
-    background-position: left bottom;
-  }
+.text__rs {
+  height: 30px;
+  width: 60px;
+  margin-right: 30px;
+  background-image: url(./rs_school.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 30px;
+  background-position: left bottom;
+}
   
-  .text__name-footer {
-    margin-right: 20px;
-  }
+.text__name-footer {
+  margin-right: 20px;
+}
 
-/* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
-    width: 10px; /* ширина для вертикального скролла */
+    width: 10px;
     background-color: #143861;
 }
 
-/* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
     background-color: #253861;
     border-radius: 9em;
@@ -80,8 +81,6 @@ footer a {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #3fcc59;
 }
-
-/* Стрелки */
 
 ::-webkit-scrollbar-button:vertical:start:decrement {
     background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),

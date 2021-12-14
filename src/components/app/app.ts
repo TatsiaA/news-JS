@@ -1,6 +1,5 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-//import { IDataSources } from '../view/sources/sources';
 
 class App {
     controller: AppController;

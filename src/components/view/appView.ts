@@ -1,6 +1,5 @@
 import News from './news/news';
 import Sources from './sources/sources';
-//import { IDataNews } from './news/news';
 import { IDataSources } from './sources/sources';
 
 export class AppView {

@@ -7,8 +7,7 @@
     margin: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    scroll-snap-type: y proximity;
-    
+    scroll-snap-type: y proximity;    
     align-items: center;
     font: 300 1em 'Fira Sans', sans-serif;
     z-index: 2;
@@ -46,7 +45,6 @@
 @media (max-width: 799px) and (min-width: 300px) {
 
     .sources {
-        justify-content: center;
-        
+        justify-content: center;        
     }
 }
