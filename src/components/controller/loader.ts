@@ -7,16 +7,17 @@ class Loader {
         this.options = options;
     }
 
-    public getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: object },
-        callback: Callback<IDataSources>
-    ) {
+    getResp({ endpoint, options = {} }: { endpoint: string; options?: object }, callback: Callback<IDataSources>) {
         this.load('GET', endpoint, callback, options);
     }
 
     errorHandler(res: Response) {
+        const enum StatusCode {
+            errorUnauthorized = 'res.status === 401',
+            errorNotFound = 'res.status === 404',
+        }
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (StatusCode.errorUnauthorized || StatusCode.errorNotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }

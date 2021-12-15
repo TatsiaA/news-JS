@@ -2,12 +2,12 @@ import './sources.css';
 
 export interface IDataSources {
     status: string;
-    sources?: Array<Source>;
+    sources?: Array<NewsSource>;
     totalResults?: number;
-    articles?: Array<Text>;
+    articles?: Array<NewsText>;
 }
 
-export type Source = {
+export type NewsSource = {
     id: string;
     name: string;
     description: string;
@@ -17,7 +17,7 @@ export type Source = {
     country: string;
 };
 
-export type Text = {
+export type NewsText = {
     source: {
         id?: string;
         name: string;
@@ -32,7 +32,7 @@ export type Text = {
 };
 
 class Sources {
-    draw(data: Array<Source>) {
+    draw(data: Array<NewsSource>) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
