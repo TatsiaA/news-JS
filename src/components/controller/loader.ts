@@ -13,11 +13,11 @@ class Loader {
 
     errorHandler(res: Response) {
         const enum StatusCode {
-            errorUnauthorized = 'res.status === 401',
-            errorNotFound = 'res.status === 404',
+            errorUnauthorized = 401,
+            errorNotFound = 404,
         }
         if (!res.ok) {
-            if (StatusCode.errorUnauthorized || StatusCode.errorNotFound)
+            if (res.status === StatusCode.errorUnauthorized || res.status === StatusCode.errorNotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
