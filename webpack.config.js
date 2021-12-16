@@ -43,8 +43,6 @@ const baseConfig = {
     ],
 };
 
-//const esLintPlugin = [];
-
 module.exports = ({ mode }) => {
     const isProductionMode = mode === 'prod';
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');

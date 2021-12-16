@@ -1,6 +1,12 @@
 import { IDataSources } from '../view/sources/sources';
 
 export type Callback<T> = (data: T) => void;
+
+const enum StatusCode {
+    errorUnauthorized = 401,
+    errorNotFound = 404,
+}
+
 class Loader {
     constructor(private baseLink: string, private options: { [key: string]: string }) {
         this.baseLink = baseLink;
@@ -12,10 +18,6 @@ class Loader {
     }
 
     errorHandler(res: Response) {
-        const enum StatusCode {
-            errorUnauthorized = 401,
-            errorNotFound = 404,
-        }
         if (!res.ok) {
             if (res.status === StatusCode.errorUnauthorized || res.status === StatusCode.errorNotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -33,7 +35,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback<IDataSources>, options: object = {}) {
+    load(method: string, endpoint: string, callback: Callback<IDataSources>, options: Object = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
